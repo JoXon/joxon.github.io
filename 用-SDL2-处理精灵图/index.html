@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="上面就是一个精灵图，由多个固定间隔的图标组成。利用精灵图的好处就是不必将图标逐个读入内存进行操作。我们可以将精灵图中需要的部分用一个个矩形截取下来，然后再输出到渲染器上。 环境：SDL2 + VC++2015 下面的代码将打开sprite.png，并对相应的操作做出响应。  sprite.png   1 #include &amp;lt;stdexcept&amp;gt;  2 #include &amp;lt;str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 SDL2 处理精灵图">
+<meta property="og:url" content="https://joxon.github.io/用-SDL2-处理精灵图/index.html">
+<meta property="og:site_name" content="Joxon&#39;s">
+<meta property="og:description" content="上面就是一个精灵图，由多个固定间隔的图标组成。利用精灵图的好处就是不必将图标逐个读入内存进行操作。我们可以将精灵图中需要的部分用一个个矩形截取下来，然后再输出到渲染器上。 环境：SDL2 + VC++2015 下面的代码将打开sprite.png，并对相应的操作做出响应。  sprite.png   1 #include &amp;lt;stdexcept&amp;gt;  2 #include &amp;lt;str">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605194306383-1306911026.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605215535586-170245605.png">
+<meta property="og:updated_time" content="2018-08-08T17:40:18.796Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 SDL2 处理精灵图">
+<meta name="twitter:description" content="上面就是一个精灵图，由多个固定间隔的图标组成。利用精灵图的好处就是不必将图标逐个读入内存进行操作。我们可以将精灵图中需要的部分用一个个矩形截取下来，然后再输出到渲染器上。 环境：SDL2 + VC++2015 下面的代码将打开sprite.png，并对相应的操作做出响应。  sprite.png   1 #include &amp;lt;stdexcept&amp;gt;  2 #include &amp;lt;str">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605194306383-1306911026.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://joxon.github.io/用-SDL2-处理精灵图/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>用 SDL2 处理精灵图 | Joxon's</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joxon's</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/用-SDL2-处理精灵图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用 SDL2 处理精灵图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2016-06-05 21:55:00" itemprop="dateCreated datePublished" datetime="2016-06-05T21:55:00+08:00">2016-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605194306383-1306911026.png" alt=""></p>
+<p>上面就是一个精灵图，由多个固定间隔的图标组成。利用精灵图的好处就是不必将图标逐个读入内存进行操作。我们可以将精灵图中需要的部分用一个个矩形截取下来，然后再输出到渲染器上。</p>
+<p>环境：SDL2 + VC++2015</p>
+<p>下面的代码将打开sprite.png，并对相应的操作做出响应。</p>
+<p><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605215535586-170245605.png" alt=""></p>
+<p>sprite.png</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">  1</span> #include &lt;stdexcept&gt;<br><span style="color: #008080;">  2</span> #include &lt;<span style="color: #0000ff;">string</span>&gt;<br><span style="color: #008080;">  3</span> #include &lt;iostream&gt;<br><span style="color: #008080;">  4</span> #include <span style="color: #800000;">“</span><span style="color: #800000;">SDL.h</span><span style="color: #800000;">“</span><br><span style="color: #008080;">  5</span> #include <span style="color: #800000;">“</span><span style="color: #800000;">SDL_image.h</span><span style="color: #800000;">“</span><br><span style="color: #008080;">  6</span><br><span style="color: #008080;">  7</span> <span style="color: #008000;">//</span><span style="color: #008000;">屏幕宽度</span><br><span style="color: #008080;">  8</span> <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> SCREEN_WIDTH = <span style="color: #800080;">500</span><span style="color: #000000;">;<br></span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> SCREEN_HEIGHT = <span style="color: #800080;">500</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 10</span><br><span style="color: #008080;"> 11</span> <span style="color: #008000;">//</span><span style="color: #008000;">全局窗口和渲染器</span><br><span style="color: #008080;"> 12</span> SDL_Window <em>window =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;"> 13</span> SDL_Renderer </em>renderer =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;"> 14</span><br><span style="color: #008080;"> 15</span> <span style="color: #008000;">//</span><span style="color: #008000;">记录SDL错误</span><br><span style="color: #008080;"> 16</span> <span style="color: #0000ff;">void</span> logSDLError(std::ostream &amp;os, <span style="color: #0000ff;">const</span> std::<span style="color: #0000ff;">string</span> &amp;<span style="color: #000000;">msg)<br></span><span style="color: #008080;"> 17</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 18</span>     os &lt;&lt; msg &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> error: </span><span style="color: #800000;">“</span> &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;"> 19</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 20</span><br><span style="color: #008080;"> 21</span> <span style="color: #008000;">//</span><span style="color: #008000;">加载图像材质</span><br><span style="color: #008080;"> 22</span> SDL_Texture<em> loadTexture(<span style="color: #0000ff;">const</span> std::<span style="color: #0000ff;">string</span> &amp;file, SDL_Renderer </em><span style="color: #000000;">ren)<br></span><span style="color: #008080;"> 23</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 24</span>     SDL_Texture <em>texture =<span style="color: #000000;"> IMG_LoadTexture(ren, file.c_str());<br></span><span style="color: #008080;"> 25</span>     <span style="color: #0000ff;">if</span> (texture == nullptr) logSDLError(std::cout, <span style="color: #800000;">“</span><span style="color: #800000;">LoadTexture</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 26</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> texture;<br></span><span style="color: #008080;"> 27</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 28</span><br><span style="color: #008080;"> 29</span><br><span style="color: #008080;"> 30</span> <span style="color: #008000;">//</span><span style="color: #008000;">根据坐标生成截取区域并复制输出到渲染器</span><br><span style="color: #008080;"> 31</span> <span style="color: #0000ff;">void</span> renderTexture(SDL_Texture </em>tex, SDL_Renderer <em>ren, <span style="color: #0000ff;">int</span> x, <span style="color: #0000ff;">int</span> y, SDL_Rect </em>clip =<span style="color: #000000;"> nullptr)<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 33</span>     <span style="color: #008000;">//</span><span style="color: #008000;">目标截面区域初始化，提供目标在渲染器的坐标</span><br><span style="color: #008080;"> 34</span>     SDL_Rect dst; dst.x = x; dst.y =<span style="color: #000000;"> y;<br></span><span style="color: #008080;"> 35</span>     <span style="color: #008000;">//</span><span style="color: #008000;">源截面区域不为空，将其值赋给目标截面</span><br><span style="color: #008080;"> 36</span>     <span style="color: #0000ff;">if</span> (clip != nullptr) { dst.w = clip-&gt;w; dst.h = clip-&gt;<span style="color: #000000;">h; }<br></span><span style="color: #008080;"> 37</span>     <span style="color: #008000;">//</span><span style="color: #008000;">将截面输出到渲染器</span><br><span style="color: #008080;"> 38</span>     SDL_RenderCopy(ren, tex, clip, &amp;<span style="color: #000000;">dst);<br></span><span style="color: #008080;"> 39</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 40</span><br><span style="color: #008080;"> 41</span> <span style="color: #0000ff;">int</span> main(<span style="color: #0000ff;">int</span> argc, <span style="color: #0000ff;">char</span>*<em><span style="color: #000000;"> argv)<br></span><span style="color: #008080;"> 42</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 43</span>     <span style="color: #008000;">//</span><span style="color: #008000;">初始化SDL</span><br><span style="color: #008080;"> 44</span>     <span style="color: #0000ff;">if</span> (SDL_Init(SDL_INIT_EVERYTHING) == -<span style="color: #800080;">1</span><span style="color: #000000;">)<br></span><span style="color: #008080;"> 45</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 46</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;"> 47</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 48</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 49</span><br><span style="color: #008080;"> 50</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建窗口</span><br><span style="color: #008080;"> 51</span>     window = SDL_CreateWindow(<span style="color: #800000;">“</span><span style="color: #800000;">Lesson 5</span><span style="color: #800000;">“</span><span style="color: #000000;">,<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">        SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);<br></span><span style="color: #008080;"> 54</span>     <span style="color: #0000ff;">if</span> (window ==<span style="color: #000000;"> nullptr)<br></span><span style="color: #008080;"> 55</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 56</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;"> 57</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">2</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 59</span><br><span style="color: #008080;"> 60</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建渲染器</span><br><span style="color: #008080;"> 61</span>     renderer = SDL_CreateRenderer(window, -<span style="color: #800080;">1</span>, SDL_RENDERER_ACCELERATED |<span style="color: #000000;"> SDL_RENDERER_PRESENTVSYNC);<br></span><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">if</span> (renderer ==<span style="color: #000000;"> nullptr)<br></span><span style="color: #008080;"> 63</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 64</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">3</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 66</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 67</span><br><span style="color: #008080;"> 68</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建纹理</span><br><span style="color: #008080;"> 69</span>     SDL_Texture </em>image =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;"> 70</span>     <span style="color: #0000ff;">try</span><br><span style="color: #008080;"> 71</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 72</span>         image = loadTexture(<span style="color: #800000;">“</span><span style="color: #800000;">sprite.png</span><span style="color: #800000;">“</span><span style="color: #000000;">, renderer);<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 74</span>     <span style="color: #0000ff;">catch</span> (<span style="color: #0000ff;">const</span> std::runtime_error &amp;<span style="color: #000000;">e)<br></span><span style="color: #008080;"> 75</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 76</span>         std::cout &lt;&lt; e.what() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;"> 77</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">4</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 78</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 79</span><br><span style="color: #008080;"> 80</span>     <span style="color: #008000;">//</span><span style="color: #008000;">iW，iH 表示截面宽高</span><br><span style="color: #008080;"> 81</span>     <span style="color: #0000ff;">int</span> iW = <span style="color: #800080;">100</span>, iH = <span style="color: #800080;">100</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 82</span>     <span style="color: #008000;">//</span><span style="color: #008000;">x，y 分别为截面在渲染器输出的坐标</span><br><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">int</span> x = SCREEN_WIDTH / <span style="color: #800080;">2</span> - iW / <span style="color: #800080;">2</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 84</span>     <span style="color: #0000ff;">int</span> y = SCREEN_HEIGHT / <span style="color: #800080;">2</span> - iH / <span style="color: #800080;">2</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 85</span><br><span style="color: #008080;"> 86</span>     <span style="color: #008000;">//</span><span style="color: #008000;">为精灵图设置截面</span><br><span style="color: #008080;"> 87</span>     SDL_Rect clips[<span style="color: #800080;">4</span><span style="color: #000000;">];<br></span><span style="color: #008080;"> 88</span><br><span style="color: #008080;"> 89</span>     <span style="color: #008000;">//</span><span style="color: #008000;">初始化截面信息</span><br><span style="color: #008080;"> 90</span>     <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = <span style="color: #800080;">0</span>; i &lt; <span style="color: #800080;">4</span>; ++<span style="color: #000000;">i)<br></span><span style="color: #008080;"> 91</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 92</span>         clips[i].x = i / <span style="color: #800080;">2</span> <em><span style="color: #000000;"> iW;<br></span><span style="color: #008080;"> 93</span>         clips[i].y = i % <span style="color: #800080;">2</span> </em><span style="color: #000000;"> iH;<br></span><span style="color: #008080;"> 94</span>         clips[i].w =<span style="color: #000000;"> iW;<br></span><span style="color: #008080;"> 95</span>         clips[i].h =<span style="color: #000000;"> iH;<br></span><span style="color: #008080;"> 96</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 97</span><br><span style="color: #008080;"> 98</span>     <span style="color: #008000;">//</span><span style="color: #008000;">表示将要输出的截面</span><br><span style="color: #008080;"> 99</span>     <span style="color: #0000ff;">int</span> useClip = <span style="color: #800080;">0</span><span style="color: #000000;">;<br></span><span style="color: #008080;">100</span><br><span style="color: #008080;">101</span> <span style="color: #000000;">    SDL_Event e;<br></span><span style="color: #008080;">102</span>     <span style="color: #0000ff;">bool</span> quit = <span style="color: #0000ff;">false</span><span style="color: #000000;">;<br></span><span style="color: #008080;">103</span>     <span style="color: #008000;">//</span><span style="color: #008000;">主循环</span><br><span style="color: #008080;">104</span>     <span style="color: #0000ff;">while</span> (!<span style="color: #000000;">quit)<br></span><span style="color: #008080;">105</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;">106</span>         <span style="color: #008000;">//</span><span style="color: #008000;">事件轮询</span><br><span style="color: #008080;">107</span>         <span style="color: #0000ff;">while</span> (SDL_PollEvent(&amp;<span style="color: #000000;">e))<br></span><span style="color: #008080;">108</span> <span style="color: #000000;">        {<br></span><span style="color: #008080;">109</span>             <span style="color: #008000;">//</span><span style="color: #008000;">按右上角的X退出</span><br><span style="color: #008080;">110</span>             <span style="color: #0000ff;">if</span> (e.type == SDL_QUIT) quit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;">111</span><br><span style="color: #008080;">112</span>             <span style="color: #008000;">//</span><span style="color: #008000;">点击鼠标随机输出截面</span><br><span style="color: #008080;">113</span>             <span style="color: #0000ff;">if</span> (e.type == SDL_MOUSEBUTTONDOWN) useClip = rand() % <span style="color: #800080;">4</span><span style="color: #000000;">;<br></span><span style="color: #008080;">114</span><br><span style="color: #008080;">115</span>             <span style="color: #008000;">//</span><span style="color: #008000;">使用数字键决定输出截面，分别有1，2，3，4</span><br><span style="color: #008080;">116</span>             <span style="color: #0000ff;">if</span> (e.type ==<span style="color: #000000;"> SDL_KEYDOWN)<br></span><span style="color: #008080;">117</span> <span style="color: #000000;">            {<br></span><span style="color: #008080;">118</span>                 <span style="color: #0000ff;">switch</span><span style="color: #000000;"> (e.key.keysym.sym)<br></span><span style="color: #008080;">119</span> <span style="color: #000000;">                {<br></span><span style="color: #008080;">120</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_1:<br></span><span style="color: #008080;">121</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_KP_1:<br></span><span style="color: #008080;">122</span>                     useClip = <span style="color: #800080;">0</span><span style="color: #000000;">;<br></span><span style="color: #008080;">123</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">124</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_2:<br></span><span style="color: #008080;">125</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_KP_2:<br></span><span style="color: #008080;">126</span>                     useClip = <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;">127</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">128</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_3:<br></span><span style="color: #008080;">129</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_KP_3:<br></span><span style="color: #008080;">130</span>                     useClip = <span style="color: #800080;">2</span><span style="color: #000000;">;<br></span><span style="color: #008080;">131</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">132</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_4:<br></span><span style="color: #008080;">133</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_KP_4:<br></span><span style="color: #008080;">134</span>                     useClip = <span style="color: #800080;">3</span><span style="color: #000000;">;<br></span><span style="color: #008080;">135</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">136</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> SDLK_ESCAPE:<br></span><span style="color: #008080;">137</span>                     quit = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;">138</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">139</span>                 <span style="color: #0000ff;">default</span><span style="color: #000000;">:<br></span><span style="color: #008080;">140</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">141</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">142</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">143</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">144</span>         <span style="color: #008000;">//</span><span style="color: #008000;">清空渲染器</span><br><span style="color: #008080;">145</span> <span style="color: #000000;">        SDL_RenderClear(renderer);<br></span><span style="color: #008080;">146</span>         <span style="color: #008000;">//</span><span style="color: #008000;">绘制材质</span><br><span style="color: #008080;">147</span>         renderTexture(image, renderer, x, y, &amp;<span style="color: #000000;">clips[useClip]);<br></span><span style="color: #008080;">148</span>         <span style="color: #008000;">//</span><span style="color: #008000;">呈现渲染器</span><br><span style="color: #008080;">149</span> <span style="color: #000000;">        SDL_RenderPresent(renderer);<br></span><span style="color: #008080;">150</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">151</span><br><span style="color: #008080;">152</span>     <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span><br><span style="color: #008080;">153</span> <span style="color: #000000;">    SDL_DestroyTexture(image);<br></span><span style="color: #008080;">154</span> <span style="color: #000000;">    SDL_DestroyRenderer(renderer);<br></span><span style="color: #008080;">155</span> <span style="color: #000000;">    SDL_DestroyWindow(window);<br></span><span style="color: #008080;">156</span><br><span style="color: #008080;">157</span> <span style="color: #000000;">    SDL_Quit();<br></span><span style="color: #008080;">158</span><br><span style="color: #008080;">159</span>     <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;<br></span><span style="color: #008080;">160</span> }</pre><br></div>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/用-SDL2-进行事件驱动编程/" rel="next" title="用 SDL2 进行事件驱动编程">
+                <i class="fa fa-chevron-left"></i> 用 SDL2 进行事件驱动编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/用-SDL2-在屏幕上打印文本/" rel="prev" title="用 SDL2 在屏幕上打印文本">
+                用 SDL2 在屏幕上打印文本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Joxon</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joxon</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

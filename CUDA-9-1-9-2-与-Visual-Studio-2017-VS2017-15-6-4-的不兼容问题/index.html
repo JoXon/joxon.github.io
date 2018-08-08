@@ -108,24 +108,30 @@
 
 
 
-  <meta name="description" content="2016-06-04，博客首文。">
+  <meta name="description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World!">
-<meta property="og:url" content="https://joxon.github.io/Hello-World/index.html">
+<meta property="og:title" content="CUDA 9.1&#x2F;9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题">
+<meta property="og:url" content="https://joxon.github.io/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/index.html">
 <meta property="og:site_name" content="Joxon&#39;s">
-<meta property="og:description" content="2016-06-04，博客首文。">
+<meta property="og:description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-08-08T17:45:23.905Z">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325005717019-644346677.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325010120581-530451321.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325120150343-1065580230.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325115734859-125845443.png">
+<meta property="og:updated_time" content="2018-08-08T17:40:18.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World!">
-<meta name="twitter:description" content="2016-06-04，博客首文。">
+<meta name="twitter:title" content="CUDA 9.1&#x2F;9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题">
+<meta name="twitter:description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://joxon.github.io/Hello-World/"/>
+  <link rel="canonical" href="https://joxon.github.io/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/"/>
 
 
 
@@ -135,7 +141,7 @@
   };
 </script>
 
-  <title>Hello World! | Joxon's</title>
+  <title>CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题 | Joxon's</title>
   
 
 
@@ -280,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/Hello-World/">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joxon">
@@ -297,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World!
+          <h1 class="post-title" itemprop="name headline">CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题
               
             
           </h1>
@@ -322,7 +328,7 @@
                 
               
 
-              <time title="Post created: 2016-06-04 15:26:00" itemprop="dateCreated datePublished" datetime="2016-06-04T15:26:00+08:00">2016-06-04</time>
+              <time title="Post created: 2018-03-25 01:06:00" itemprop="dateCreated datePublished" datetime="2018-03-25T01:06:00+08:00">2018-03-25</time>
             
 
             
@@ -339,7 +345,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-09 01:45:23" itemprop="dateModified" datetime="2018-08-09T01:45:23+08:00">2018-08-09</time>
+                <time title="Updated at: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -372,7 +378,27 @@
       
 
       
-        <p>2016-06-04，博客首文。</p>
+        <h1 id="2018年7月9日更新："><a href="#2018年7月9日更新：" class="headerlink" title="2018年7月9日更新："></a>2018年7月9日更新：</h1><p>CUDA已推出9.2版本，最高支持<span class="n">MSVC<span class="o">++ <span class="mf">14.13 <span class="n">_MSC_VER <span class="o">== <span class="mi">1913 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.6<span class="p">)。</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="n"><span class="o"><span class="mf"><span class="n"><span class="o"><span class="mi"><span class="p"><span class="n"><span class="n"><span class="mi"><span class="n"><span class="mf"><span class="p"><img src="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png" alt=""></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="n"><span class="o"><span class="mf"><span class="n"><span class="o"><span class="mi"><span class="p"><span class="n"><span class="n"><span class="mi"><span class="n"><span class="mf"><span class="p">然而最新版本是<span class="n">MSVC<span class="o">++ <span class="mf">14.14 <span class="n">_MSC_VER <span class="o">== <span class="mi">1914 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.7<span class="p">)</span></span></span></span></span></span></span></span></span></span></span></span></span>，可见CUDA总比VS要慢一拍。</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h1 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h1><p>CUDA Toolkit - v9.1.85</p>
+<p>Visual Studio 2017 (VS2017 15.6.4) + 平台工具集 v141（version 14.12，<code>_MSC_VER=1912）或</code></p>
+<p>CUDA Toolkit - v9.2.88.1</p>
+<p><span class="n">MSVC<span class="o">++ <span class="mf">14.13 <span class="n">_MSC_VER <span class="o">== <span class="mi">1913 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.6<span class="p">)</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h1 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h1><p>CUDA未能兼容最新版工具集。</p>
+<p>打开C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\include\crt\host_config.h，定位到133行：</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325005717019-644346677.png" alt=""></p>
+<p>可以看到当前CUDA支持的工具集版本。</p>
+<p>由于当前工具集版本为<code>1912</code>，故无法兼容。修改_MSC_VER &gt; 1911为更高的数字可以消除报错，但是编译仍然是无法通过的。</p>
+<h1 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h1><p>安装兼容的工具集版本。在这里，我们可以选择1900、1910、1911版本工具集。</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325010120581-530451321.png" alt=""></p>
+<p>打开Visual Studio Installer，选择相应的工具集进行安装。</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325120150343-1065580230.png" alt=""></p>
+<p>然后修改项目工具集即可。</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325115734859-125845443.png" alt=""></p>
+<h1 id="参见："><a href="#参见：" class="headerlink" title="参见："></a>参见：</h1><p><a href="https://blog.csdn.net/shenpibaipao/article/details/79519533" target="_blank" rel="noopener">https://blog.csdn.net/shenpibaipao/article/details/79519533</a></p>
+<p><a href="https://devtalk.nvidia.com/default/topic/1027299/cuda-9-failed-to-support-the-latest-visual-studio-2017-version-15-5/" target="_blank" rel="noopener">https://devtalk.nvidia.com/default/topic/1027299/cuda-9-failed-to-support-the-latest-visual-studio-2017-version-15-5/</a></p>
+<p><a href="https://blogs.msdn.microsoft.com/vcblog/2017/11/15/side-by-side-minor-version-msvc-toolsets-in-visual-studio-2017/" target="_blank" rel="noopener">https://blogs.msdn.microsoft.com/vcblog/2017/11/15/side-by-side-minor-version-msvc-toolsets-in-visual-studio-2017/</a></p>
 
       
     </div>
@@ -400,14 +426,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/VPS-上搭建-SSR-及其使用之心得/" rel="next" title="VPS 上搭建 SSR 及其使用之心得">
+                <i class="fa fa-chevron-left"></i> VPS 上搭建 SSR 及其使用之心得
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/VPS-入坑之路/" rel="prev" title="VPS 入坑之路">
-                VPS 入坑之路 <i class="fa fa-chevron-right"></i>
+              <a href="/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/" rel="prev" title="MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发">
+                MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -453,8 +483,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2018年7月9日更新："><span class="nav-number">1.</span> <span class="nav-text">2018年7月9日更新：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境："><span class="nav-number">2.</span> <span class="nav-text">环境：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原因："><span class="nav-number">3.</span> <span class="nav-text">原因：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案："><span class="nav-number">4.</span> <span class="nav-text">解决方案：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参见："><span class="nav-number">5.</span> <span class="nav-text">参见：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

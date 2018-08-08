@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="参考：Easysoft公司提供的ODBC教程 微软提供的ODBC文档 环境： Windows 10 x64 1803 MariaDB TX 10.2.14 x64 MariaDB ODBC Connector 3.0.3 x64 Visual Studio 2017 Community 15.6.7  安装ODBC驱动并配置数据源：先安装ODBC驱动。根据自身需求选择32或64位版本。我选择了64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发">
+<meta property="og:url" content="https://joxon.github.io/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/index.html">
+<meta property="og:site_name" content="Joxon&#39;s">
+<meta property="og:description" content="参考：Easysoft公司提供的ODBC教程 微软提供的ODBC文档 环境： Windows 10 x64 1803 MariaDB TX 10.2.14 x64 MariaDB ODBC Connector 3.0.3 x64 Visual Studio 2017 Community 15.6.7  安装ODBC驱动并配置数据源：先安装ODBC驱动。根据自身需求选择32或64位版本。我选择了64">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201515891-1392903471.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201628057-1995761091.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201646417-888073020.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201748344-584479436.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506202709345-420149552.png">
+<meta property="og:updated_time" content="2018-08-08T17:40:18.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发">
+<meta name="twitter:description" content="参考：Easysoft公司提供的ODBC教程 微软提供的ODBC文档 环境： Windows 10 x64 1803 MariaDB TX 10.2.14 x64 MariaDB ODBC Connector 3.0.3 x64 Visual Studio 2017 Community 15.6.7  安装ODBC驱动并配置数据源：先安装ODBC驱动。根据自身需求选择32或64位版本。我选择了64">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201515891-1392903471.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://joxon.github.io/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发 | Joxon's</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joxon's</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-05-06 20:28:00" itemprop="dateCreated datePublished" datetime="2018-05-06T20:28:00+08:00">2018-05-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://www.easysoft.com/developer/languages/c/odbc_tutorial.html" target="_blank" rel="noopener">Easysoft公司提供的ODBC教程</a></p>
+<p><a href="https://docs.microsoft.com/en-us/sql/relational-databases/native-client/odbc/sql-server-native-client-odbc?view=sql-server-2017" target="_blank" rel="noopener">微软提供的ODBC文档</a></p>
+<h1 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h1><ul>
+<li>Windows 10 x64 1803</li>
+<li>MariaDB TX 10.2.14 x64</li>
+<li>MariaDB ODBC Connector 3.0.3 x64</li>
+<li>Visual Studio 2017 Community 15.6.7</li>
+</ul>
+<h1 id="安装ODBC驱动并配置数据源："><a href="#安装ODBC驱动并配置数据源：" class="headerlink" title="安装ODBC驱动并配置数据源："></a>安装ODBC驱动并配置数据源：</h1><p>先安装ODBC驱动。根据自身需求选择32或64位版本。我选择了64位版本。</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201515891-1392903471.png" alt=""></p>
+<p>打开ODBC数据源管理程序，点击右侧的&ldquo;添加&rdquo;按钮，添加用户DSN。如图操作。</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201628057-1995761091.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201646417-888073020.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506201748344-584479436.png" alt=""></p>
+<p>后面按照默认配置，点击Next即可。</p>
+<h1 id="编写ODBC程序："><a href="#编写ODBC程序：" class="headerlink" title="编写ODBC程序："></a>编写ODBC程序：</h1><p>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 引入头文件：</p>
+<div class="cnblogs_code"><br><pre>#include &lt;iostream&gt;<span style="color: #000000;"><br><br>#include </span>&lt;windows.h&gt;<span style="color: #000000;"><br><br>#include </span>&lt;sqlext.h&gt;</pre><br></div>
+
+<p>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 定义一个检查错误的宏：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">#define</span> ODBC_CHECK(x) \<span style="color: #000000;"><br><br>{\<br><br>    </span><span style="color: #0000ff;">if</span> (!<span style="color: #000000;">SQL_SUCCEEDED(x))\<br><br>    {\<br><br>        std::cout </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">SQL error occurred at line </span><span style="color: #800000;">“</span> &lt;&lt; <strong>LINE</strong> &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">.</span><span style="color: #800000;">“</span><span style="color: #000000;">;\<br><br>        getchar();\<br><br>        exit(</span>-<span style="color: #800080;">1</span><span style="color: #000000;">);\<br><br>    }\<br><br>}</span></pre><br></div>
+
+<p>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ODBC初始化，为ODBC分配环境句柄</p>
+<p><strong>（分配环境句柄：注意，这里使用了新版的ODBC API SQLAllocHandle**</strong>，而不是SQLAllocEnv<strong>**）</strong></p>
+<div class="cnblogs_code"><br><pre>    <span style="color: #008000;">//</span><span style="color: #008000;"> SQL Handle of ENVironment</span><br><span style="color: #000000;"><br>    SQLHENV env;<br><br>    ODBC_CHECK(SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, </span>&amp;env)); <span style="color: #008000;">//</span><span style="color: #008000;"> SQLAllocEnv</span><br><span style="color: #000000;"><br>　　ODBC_CHECK(SQLSetEnvAttr(env, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, </span><span style="color: #800080;">0</span>));</pre><br></div>
+
+<p>4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 建立应用程序与ODBC数据源的连接</p>
+<p><strong>（分配连接句柄：注意，这里使用了新版的ODBC API SQLAllocHandle**</strong>，而不是SQLAllocConnect<strong>**）</strong></p>
+<div class="cnblogs_code"><br><pre>    <span style="color: #008000;">//</span><span style="color: #008000;"> SQL Handle of DB Connection</span><br><span style="color: #000000;"><br>    SQLHDBC dbc;<br><br>    SQLCHAR dbcConfOut[</span><span style="color: #800080;">256</span><span style="color: #000000;">];<br><br>    ODBC_CHECK(SQLAllocHandle(SQL_HANDLE_DBC, env, </span>&amp;dbc)); <span style="color: #008000;">//</span><span style="color: #008000;"> SQLAllocConnect</span><br><span style="color: #000000;"><br>    ODBC_CHECK(SQLSetConnectAttr(dbc, SQL_LOGIN_TIMEOUT, (SQLPOINTER)</span><span style="color: #800080;">5</span>, <span style="color: #800080;">0</span>));</pre><br></div>
+
+<p><strong>（连接数据源：可以使用SQLConnect**</strong>，也可以使用SQLDriverConnect<strong><strong>；可以手动指定DSN</strong></strong>名字，也可以通过弹出窗口来指定）**</p>
+<div class="cnblogs_code"><br><pre>    <span style="color: #008000;">//</span><span style="color: #008000;"> specify manually</span><br><span style="color: #000000;"><br>    ODBC_CHECK(SQLDriverConnect(dbc, NULL, (SQLCHAR </span>*)<span style="color: #800000;">“</span><span style="color: #800000;">DSN=MariaDB;</span><span style="color: #800000;">“</span><span style="color: #000000;">, SQL_NTS,<br><br>                                dbcConfOut, </span><span style="color: #0000ff;">sizeof</span>(dbcConfOut), NULL, SQL_DRIVER_COMPLETE)); <span style="color: #008000;">//</span><span style="color: #008000;"> SQLConnect<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> specify by popup window<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">ODBC_CHECK(SQLDriverConnect(dbc, GetDesktopWindow(), NULL, SQL_NTS,<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">                            dbcConfOut, sizeof(dbcConfOut), NULL, SQL_DRIVER_COMPLETE)); </span><span style="color: #008000;">//</span><span style="color: #008000;"> SQLConnect</span></pre><br></div>
+
+<p><strong>（显示连接成功的信息）</strong></p>
+<div class="cnblogs_code"><br><pre>    std::cout &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">Connected!</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl<br><br>        </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">ConnStrIn = </span><span style="color: #800000;">“</span> &lt;&lt; dbcConfOut &lt;&lt;<span style="color: #000000;"> std::endl;<br><br>    SQLCHAR dbmsName[</span><span style="color: #800080;">256</span><span style="color: #000000;">];<br><br>    ODBC_CHECK(SQLGetInfo(dbc, SQL_DBMS_NAME, (SQLPOINTER)dbmsName, </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(dbmsName), NULL));<br><br>    SQLCHAR dbmsVer[</span><span style="color: #800080;">256</span><span style="color: #000000;">];<br><br>    ODBC_CHECK(SQLGetInfo(dbc, SQL_DBMS_VER, (SQLPOINTER)dbmsVer, </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(dbmsVer), NULL));<br><br>    std::cout </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">DBMS Name = </span><span style="color: #800000;">“</span> &lt;&lt; dbmsName &lt;&lt;<span style="color: #000000;"> std::endl<br><br>        </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">DBMS Version = </span><span style="color: #800000;">“</span> &lt;&lt; dbmsVer &lt;&lt; std::endl;</pre><br></div>
+
+<p><strong>（分配语句句柄：注意，这里使用了新版的ODBC API SQLAllocHandle**</strong>，而不是SQLAllocStmt<strong>**）</strong></p>
+<div class="cnblogs_code"><br><pre>    <span style="color: #008000;">//</span><span style="color: #008000;"> SQL Handle of STateMenT</span><br><span style="color: #000000;"><br>    SQLHSTMT stmt;<br><br>    ODBC_CHECK(SQLAllocHandle(SQL_HANDLE_STMT, dbc, </span>&amp;stmt)); <span style="color: #008000;">//</span><span style="color: #008000;"> SQLAllocStmt</span></pre><br></div>
+
+<p>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 利用SQLExecDirect语句，实现数据库应用程序对数据库的建立、查询、修改、删除等&nbsp;</p>
+<p><strong>（建立一个循环，一直接收并执行用户的SQL**</strong>的语句，直到用户退出）**</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">    const</span> <span style="color: #0000ff;">int</span> queryLen = <span style="color: #800080;">1024</span><span style="color: #000000;">;<br><br>    SQLCHAR query[queryLen];<br><br>    std::cout </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">Please input your SQL query. Type CTRL+Z to quit.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl<br><br>        </span>&lt;&lt; dbmsName &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> &gt;</span><span style="color: #800000;">“</span><span style="color: #000000;">;<br><br>    </span><span style="color: #0000ff;">while</span> (fgets((<span style="color: #0000ff;">char</span>*)query, queryLen - <span style="color: #800080;">1</span><span style="color: #000000;">, stdin))<br><br>    {<br><br>        </span><span style="color: #0000ff;">if</span> (query[<span style="color: #800080;">0</span>] == <span style="color: #800000;">‘</span><span style="color: #800000;">\n</span><span style="color: #800000;">‘</span><span style="color: #000000;">)<br><br>        {<br><br>            std::cout </span>&lt;&lt; dbmsName &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> &gt;</span><span style="color: #800000;">“</span><span style="color: #000000;">;<br><br>            </span><span style="color: #0000ff;">continue</span><span style="color: #000000;">;<br><br>        }<br><br>        </span><span style="color: #0000ff;">switch</span><span style="color: #000000;"> (SQLExecDirect(stmt, query, SQL_NTS))<br><br>        {<br><br>            </span><span style="color: #0000ff;">case</span><span style="color: #000000;"> SQL_SUCCESS_WITH_INFO:<br><br>            </span><span style="color: #0000ff;">case</span><span style="color: #000000;"> SQL_SUCCESS:<br><br>            {<br><br>                SQLSMALLINT col;<br><br>                SQLNumResultCols(stmt, </span>&amp;<span style="color: #000000;">col);<br><br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> SELECT</span><br><br>                <span style="color: #0000ff;">if</span> (col &gt; <span style="color: #800080;">0</span><span style="color: #000000;">)<br><br>                {   </span><span style="color: #008000;">//</span><span style="color: #008000;"> 2 methods: SQLGetData() and SQLBindCol()<br><br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> SQLGetData() is adopted here</span><br><br>                    <span style="color: #0000ff;">char</span> buf[<span style="color: #800080;">512</span><span style="color: #000000;">];<br><br>                    SQLUSMALLINT colidx;<br><br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> print column names</span><br><br>                    <span style="color: #0000ff;">for</span> (colidx = <span style="color: #800080;">1</span>; colidx &lt;= col; ++<span style="color: #000000;">colidx)<br><br>                    {<br><br>                        SQLColAttribute(stmt, colidx, SQL_DESC_NAME,<br><br>                                        buf, </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(buf), NULL, NULL);<br><br>                        std::cout </span>&lt;&lt; buf &lt;&lt; <span style="color: #800000;">“</span> <span style="color: #800000;">“</span><span style="color: #000000;">;<br><br>                    }<br><br>                    std::cout </span>&lt;&lt;<span style="color: #000000;"> std::endl;<br><br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> iterate each row</span><br><span style="color: #000000;"><br>                    unsigned row </span>= <span style="color: #800080;">0</span>; <span style="color: #008000;">//</span><span style="color: #008000;"> row counter</span><br><br>                    <span style="color: #0000ff;">while</span><span style="color: #000000;"> (SQL_SUCCEEDED(SQLFetch(stmt)))<br><br>                    {<br><br>                        </span>++<span style="color: #000000;">row;<br><br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> iterate each column</span><br><br>                        <span style="color: #0000ff;">for</span> (colidx = <span style="color: #800080;">1</span>; colidx &lt;= col; ++<span style="color: #000000;">colidx)<br><br>                        {<br><br>                            SQLLEN indicator;<br><br>                            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (SQL_SUCCEEDED(SQLGetData(stmt, colidx, SQL_C_CHAR,<br><br>                                                         buf, </span><span style="color: #0000ff;">sizeof</span>(buf), &amp;<span style="color: #000000;">indicator)))<br><br>                            {<br><br>                                </span><span style="color: #0000ff;">if</span> (indicator == SQL_NULL_DATA) strcpy(buf, <span style="color: #800000;">“</span><span style="color: #800000;">NULL</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br><br>                                std::cout </span>&lt;&lt; buf &lt;&lt; <span style="color: #800000;">“</span> <span style="color: #800000;">“</span><span style="color: #000000;">;<br><br>                            }<br><br>                        }<br><br>                        std::cout </span>&lt;&lt;<span style="color: #000000;"> std::endl;<br><br>                    }<br><br>                    </span><span style="color: #0000ff;">if</span> (row == <span style="color: #800080;">1</span>) { std::cout &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">1 row in set.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl; }<br><br>                    </span><span style="color: #0000ff;">else</span> { std::cout &lt;&lt; row &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> rows in set.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl; }<br><br>                }<br><br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> CREATE, UPDATE, DELETE, etc.</span><br><br>                <span style="color: #0000ff;">else</span><span style="color: #000000;"><br><br>                {<br><br>                    SQLLEN row;<br><br>                    ODBC_CHECK(SQLRowCount(stmt, </span>&amp;<span style="color: #000000;">row));<br><br>                    </span><span style="color: #0000ff;">if</span> (row == <span style="color: #800080;">1</span>) { std::cout &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">1 row affected.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl; }<br><br>                    </span><span style="color: #0000ff;">else</span> { std::cout &lt;&lt; row &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> rows affected.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl; }<br><br>                }<br><br>                </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;<br><br>            }<br><br>            </span><span style="color: #0000ff;">case</span><span style="color: #000000;"> SQL_ERROR:<br><br>            {<br><br>                std::cout </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">Returned SQL_ERROR.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl;<br><br>                </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;<br><br>            }<br><br>            </span><span style="color: #0000ff;">default</span><span style="color: #000000;">:<br><br>            {<br><br>                std::cout </span>&lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">Unknown SQLRETURN.</span><span style="color: #800000;">“</span> &lt;&lt;<span style="color: #000000;"> std::endl;<br><br>            }<br><br>        }<br><br>        ODBC_CHECK(SQLFreeStmt(stmt, SQL_CLOSE));<br><br>        std::cout </span>&lt;&lt; dbmsName &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;"> &gt;</span><span style="color: #800000;">“</span><span style="color: #000000;">;<br><br>    }</span></pre><br></div>
+
+<p>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 检索查询结果集&nbsp;</p>
+<p><img src="https://images2018.cnblogs.com/blog/873981/201805/873981-20180506202709345-420149552.png" alt=""></p>
+<p>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 结束数据库应用程序</p>
+<div class="cnblogs_code"><br><pre>    <span style="color: #008000;">//</span><span style="color: #008000;"> release resources</span><br><span style="color: #000000;"><br>    ODBC_CHECK(SQLFreeHandle(SQL_HANDLE_STMT, stmt));<br><br>    ODBC_CHECK(SQLDisconnect(dbc));<br><br>    ODBC_CHECK(SQLFreeHandle(SQL_HANDLE_DBC, dbc));<br><br>    ODBC_CHECK(SQLFreeHandle(SQL_HANDLE_ENV, env));<br><br>    </span><span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span>;</pre><br></div>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/" rel="next" title="CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题">
+                <i class="fa fa-chevron-left"></i> CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Hello-Hexo/" rel="prev" title="Hello Hexo!">
+                Hello Hexo! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Joxon</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境："><span class="nav-number">2.</span> <span class="nav-text">环境：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装ODBC驱动并配置数据源："><span class="nav-number">3.</span> <span class="nav-text">安装ODBC驱动并配置数据源：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写ODBC程序："><span class="nav-number">4.</span> <span class="nav-text">编写ODBC程序：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joxon</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
