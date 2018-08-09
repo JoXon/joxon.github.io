@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -112,7 +112,7 @@
 <meta property="og:title" content="Joxon&#39;s">
 <meta property="og:url" content="https://joxon.github.io/index.html">
 <meta property="og:site_name" content="Joxon&#39;s">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Joxon&#39;s">
 
@@ -171,7 +171,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -198,7 +198,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -218,7 +218,15 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
         
         
@@ -226,7 +234,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
 
       
@@ -277,6 +285,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/GitHub-Pages-+-Hexo-博客搭建笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/GitHub-Pages-+-Hexo-博客搭建笔记/" itemprop="url">
+                  GitHub Pages + Hexo 博客搭建笔记
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-09 02:44:17 / 修改时间：17:12:48" itemprop="dateCreated datePublished" datetime="2018-08-09T02:44:17+08:00">2018-08-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>利用GitHub建博客早已不是什么新鲜事。此文用于记录本次建站的流程，顺便练习一下Markdown的用法。</p>
+<p>在<a href="https://staticsitegenerators.net/" target="_blank" rel="noopener">静态页面生成器的比较网站</a>上以stars数量排序，前三位分别是：</p>
+<ul>
+<li>Jekyll：Ruby实现</li>
+<li>Hugo：Go实现</li>
+<li>Hexo：Javascript实现</li>
+</ul>
+<p>由于对Node.js多少有些经验，故选择了Hexo。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Github 账号一个</li>
+<li>Node.js 环境</li>
+<li>Visual Studio Code</li>
+</ul>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>前往Github的个人页面创建一个新的仓库，名字为<code>[username].github.io</code>，其中<code>[username]</code>是注册Github时的用户名。<strong>一定要保证[username]和注册用户名相同，否则域名将不起作用</strong>，也就是说，一个账号只能拥有一个Github Page。</p>
+<p>可以参考<a href="https://pages.github.com/" target="_blank" rel="noopener">官方的指南</a>作为Hello World。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>假设我们已经配置好Node.js环境，windows用户一定要以管理员权限打开命令行窗口，全局安装<code>hexo-cli</code>到Node环境中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>安装成功后，找一个喜欢的目录，初始化一个hexo项目，[folder]是项目名字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [folder]</span><br></pre></td></tr></table></figure>
+<p>然后改变当前工作目录为刚刚新建的[folder]：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [folder]</span><br></pre></td></tr></table></figure>
+<p>安装项目依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>到此，hexo项目已经安装完毕，可以开始撰文或进行<a href="https://hexo.io/docs/configuration" target="_blank" rel="noopener">参数调节</a>。</p>
+<h3 id="撰文"><a href="#撰文" class="headerlink" title="撰文"></a>撰文</h3><p>执行<code>hexo new [title]</code>，新建一篇md格式的文档，开始编写。</p>
+<p><code>hexo new</code>可以简写为<code>hexo n</code></p>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><p>执行<code>hexo server</code>可以在本地搭建服务器，可以在浏览器预览自己的博客。</p>
+<p><code>hexo server</code>可以简写为<code>hexo s</code>。</p>
+<h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>执行<code>hexo generate</code>可以生成博客的静态文件。</p>
+<p><code>hexo generate</code>可以简写为<code>hexo g</code>。</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>执行<code>hexo deploy</code>可以把博客部署到指定的位置，这里需要配置<code>_config.yml</code>中的deploy参数。</p>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/user/user.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  message: &quot;Site updated: &#123;&#123; now(&apos;YYYY-MM-DD HH:mm:ss&apos;) &#125;&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p><code>hexo deploy</code>可以简写为<code>hexo d</code>。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/Hello-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -294,14 +474,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/Hello-Hexo/" itemprop="url">
                   Hello Hexo!
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -316,14 +496,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-08-09 01:45:11 / Modified: 01:53:57" itemprop="dateCreated datePublished" datetime="2018-08-09T01:45:11+08:00">2018-08-09</time>
+              <time title="创建时间：2018-08-09 01:45:11 / 修改时间：02:36:02" itemprop="dateCreated datePublished" datetime="2018-08-09T01:45:11+08:00">2018-08-09</time>
             
 
             
@@ -435,14 +615,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/" itemprop="url">
                   MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -457,14 +637,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-05-06 20:28:00" itemprop="dateCreated datePublished" datetime="2018-05-06T20:28:00+08:00">2018-05-06</time>
+              <time title="创建时间：2018-05-06 20:28:00" itemprop="dateCreated datePublished" datetime="2018-05-06T20:28:00+08:00">2018-05-06</time>
             
 
             
@@ -479,9 +659,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -634,14 +814,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/" itemprop="url">
                   CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -656,14 +836,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-03-25 01:06:00" itemprop="dateCreated datePublished" datetime="2018-03-25T01:06:00+08:00">2018-03-25</time>
+              <time title="创建时间：2018-03-25 01:06:00" itemprop="dateCreated datePublished" datetime="2018-03-25T01:06:00+08:00">2018-03-25</time>
             
 
             
@@ -678,9 +858,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -806,14 +986,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/VPS-上搭建-SSR-及其使用之心得/" itemprop="url">
                   VPS 上搭建 SSR 及其使用之心得
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -828,14 +1008,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-07-06 21:06:00" itemprop="dateCreated datePublished" datetime="2017-07-06T21:06:00+08:00">2017-07-06</time>
+              <time title="创建时间：2017-07-06 21:06:00" itemprop="dateCreated datePublished" datetime="2017-07-06T21:06:00+08:00">2017-07-06</time>
             
 
             
@@ -850,9 +1030,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -967,14 +1147,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/VPS-上搭建-Kcptun-及其使用之心得/" itemprop="url">
                   VPS 上搭建 Kcptun 及其使用之心得
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -989,14 +1169,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-03-19 13:07:00" itemprop="dateCreated datePublished" datetime="2017-03-19T13:07:00+08:00">2017-03-19</time>
+              <time title="创建时间：2017-03-19 13:07:00" itemprop="dateCreated datePublished" datetime="2017-03-19T13:07:00+08:00">2017-03-19</time>
             
 
             
@@ -1011,9 +1191,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1163,14 +1343,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/用-SDL2-在屏幕上打印文本/" itemprop="url">
                   用 SDL2 在屏幕上打印文本
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -1185,14 +1365,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-06-06 23:17:00" itemprop="dateCreated datePublished" datetime="2016-06-06T23:17:00+08:00">2016-06-06</time>
+              <time title="创建时间：2016-06-06 23:17:00" itemprop="dateCreated datePublished" datetime="2016-06-06T23:17:00+08:00">2016-06-06</time>
             
 
             
@@ -1207,9 +1387,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1321,14 +1501,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/用-SDL2-处理精灵图/" itemprop="url">
                   用 SDL2 处理精灵图
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -1343,14 +1523,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-06-05 21:55:00" itemprop="dateCreated datePublished" datetime="2016-06-05T21:55:00+08:00">2016-06-05</time>
+              <time title="创建时间：2016-06-05 21:55:00" itemprop="dateCreated datePublished" datetime="2016-06-05T21:55:00+08:00">2016-06-05</time>
             
 
             
@@ -1365,9 +1545,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1481,14 +1661,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/用-SDL2-进行事件驱动编程/" itemprop="url">
                   用 SDL2 进行事件驱动编程
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -1503,14 +1683,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-06-05 16:12:00" itemprop="dateCreated datePublished" datetime="2016-06-05T16:12:00+08:00">2016-06-05</time>
+              <time title="创建时间：2016-06-05 16:12:00" itemprop="dateCreated datePublished" datetime="2016-06-05T16:12:00+08:00">2016-06-05</time>
             
 
             
@@ -1525,9 +1705,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1639,14 +1819,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/用-SDL2-加载PNG平铺背景并显示前景/" itemprop="url">
                   用 SDL2 加载PNG平铺背景并显示前景
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -1661,14 +1841,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-06-05 15:22:00" itemprop="dateCreated datePublished" datetime="2016-06-05T15:22:00+08:00">2016-06-05</time>
+              <time title="创建时间：2016-06-05 15:22:00" itemprop="dateCreated datePublished" datetime="2016-06-05T15:22:00+08:00">2016-06-05</time>
             
 
             
@@ -1683,9 +1863,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1797,14 +1977,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/posts/用-SDL2-平铺背景并显示前景/" itemprop="url">
                   用 SDL2 平铺背景并显示前景
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -1819,14 +1999,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-06-05 14:37:00" itemprop="dateCreated datePublished" datetime="2016-06-05T14:37:00+08:00">2016-06-05</time>
+              <time title="创建时间：2016-06-05 14:37:00" itemprop="dateCreated datePublished" datetime="2016-06-05T14:37:00+08:00">2016-06-05</time>
             
 
             
@@ -1841,9 +2021,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -1925,13 +2105,685 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/用-SDL2-显示一张图片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/用-SDL2-显示一张图片/" itemprop="url">
+                  用 SDL2 显示一张图片
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-05 14:11:00" itemprop="dateCreated datePublished" datetime="2016-06-05T14:11:00+08:00">2016-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>来源：</p>
+<p><a href="http://adolfans.github.io/sdltutorialcn/" target="_blank" rel="noopener">http://adolfans.github.io/sdltutorialcn/</a> （中文教程）</p>
+<p><a href="http://www.willusher.io/pages/sdl2/" target="_blank" rel="noopener">http://www.willusher.io/pages/sdl2/</a> （英文教程）</p>
+<p>环境：SDL2 + VC++2015</p>
+<p>下面的代码将打开一个窗口显示hello.bmp</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #include &lt;iostream&gt;<br><span style="color: #008080;"> 2</span> #include &lt;SDL.h&gt;<br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">int</span> main(<span style="color: #0000ff;">int</span> argc, <span style="color: #0000ff;">char</span>*<em><span style="color: #000000;"> argv)<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 6</span>     <span style="color: #008000;">//</span><span style="color: #008000;">初始化SDL</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">if</span> (SDL_Init(SDL_INIT_VIDEO) != <span style="color: #800080;">0</span><span style="color: #000000;">)<br></span><span style="color: #008080;"> 8</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;"> 9</span>         std::cout &lt;&lt; <span style="color: #800000;">“</span><span style="color: #800000;">SDL_Init Error: </span><span style="color: #800000;">“</span> &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;">10</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建窗口</span><br><span style="color: #008080;">14</span>     SDL_Window </em>win =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;">15</span>     win = SDL_CreateWindow(<span style="color: #800000;">“</span><span style="color: #800000;">Hello World!</span><span style="color: #800000;">“</span><span style="color: #000000;">,<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,<br></span><span style="color: #008080;">17</span>         <span style="color: #800080;">640</span>, <span style="color: #800080;">480</span><span style="color: #000000;">, SDL_WINDOW_SHOWN);<br></span><span style="color: #008080;">18</span>     <span style="color: #0000ff;">if</span> (win ==<span style="color: #000000;"> nullptr)<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;">20</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;">21</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">23</span><br><span style="color: #008080;">24</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建渲染器</span><br><span style="color: #008080;">25</span>     SDL_Renderer <em>ren =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;">26</span>     ren = SDL_CreateRenderer(win, -<span style="color: #800080;">1</span><span style="color: #000000;">,<br></span><span style="color: #008080;">27</span>         SDL_RENDERER_ACCELERATED |<span style="color: #000000;"> SDL_RENDERER_PRESENTVSYNC);<br></span><span style="color: #008080;">28</span>     <span style="color: #0000ff;">if</span> (ren ==<span style="color: #000000;"> nullptr)<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">    {<br></span><span style="color: #008080;">30</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;">31</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">33</span><br><span style="color: #008080;">34</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建表面</span><br><span style="color: #008080;">35</span>     SDL_Surface </em>bmp =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;">36</span>     bmp = SDL_LoadBMP(<span style="color: #800000;">“</span><span style="color: #800000;">hello.bmp</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">37</span>     <span style="color: #0000ff;">if</span> (bmp ==<span style="color: #000000;"> nullptr) {<br></span><span style="color: #008080;">38</span>         std::cout &lt;&lt; SDL_GetError() &lt;&lt;<span style="color: #000000;"> std::endl;<br></span><span style="color: #008080;">39</span>         <span style="color: #0000ff;">return</span> <span style="color: #800080;">1</span><span style="color: #000000;">;<br></span><span style="color: #008080;">40</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">41</span><br><span style="color: #008080;">42</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建材质</span><br><span style="color: #008080;">43</span>     SDL_Texture *tex =<span style="color: #000000;"> nullptr;<br></span><span style="color: #008080;">44</span>     tex =<span style="color: #000000;"> SDL_CreateTextureFromSurface(ren, bmp);<br></span><span style="color: #008080;">45</span> <span style="color: #000000;">    SDL_FreeSurface(bmp);<br></span><span style="color: #008080;">46</span><br><span style="color: #008080;">47</span>     <span style="color: #008000;">//</span><span style="color: #008000;">清空渲染器</span><br><span style="color: #008080;">48</span> <span style="color: #000000;">    SDL_RenderClear(ren);<br></span><span style="color: #008080;">49</span>     <span style="color: #008000;">//</span><span style="color: #008000;">将材质复制到渲染器</span><br><span style="color: #008080;">50</span> <span style="color: #000000;">    SDL_RenderCopy(ren, tex, NULL, NULL);<br></span><span style="color: #008080;">51</span>     <span style="color: #008000;">//</span><span style="color: #008000;">呈现渲染器</span><br><span style="color: #008080;">52</span> <span style="color: #000000;">    SDL_RenderPresent(ren);<br></span><span style="color: #008080;">53</span>     <span style="color: #008000;">//</span><span style="color: #008000;">窗口延时</span><br><span style="color: #008080;">54</span>     SDL_Delay(<span style="color: #800080;">2000</span><span style="color: #000000;">);<br></span><span style="color: #008080;">55</span><br><span style="color: #008080;">56</span>     <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span><br><span style="color: #008080;">57</span> <span style="color: #000000;">    SDL_DestroyTexture(tex);<br></span><span style="color: #008080;">58</span> <span style="color: #000000;">    SDL_DestroyRenderer(ren);<br></span><span style="color: #008080;">59</span> <span style="color: #000000;">    SDL_DestroyWindow(win);<br></span><span style="color: #008080;">60</span>     <span style="color: #008000;">//</span><span style="color: #008000;">退出SDL</span><br><span style="color: #008080;">61</span> <span style="color: #000000;">    SDL_Quit();<br></span><span style="color: #008080;">62</span><br><span style="color: #008080;">63</span>     <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;<br></span><span style="color: #008080;">64</span> }</pre><br></div>
+
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/VPS-安全措施（CentOS-6）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/VPS-安全措施（CentOS-6）/" itemprop="url">
+                  VPS 安全措施（CentOS 6）
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-05 12:59:00" itemprop="dateCreated datePublished" datetime="2016-06-05T12:59:00+08:00">2016-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>新到手一台VPS，要做的第一件事大概是做好安全措施。</p>
+<p>下面针对CentOS 6随便写点，我目前做的几步是：</p>
+<ol>
+<li>修改root密码</li>
+<li>SSH-key登录</li>
+<li>配置iptable</li>
+<li>安装fail2ban</li>
+</ol>
+<h1 id="1-修改root密码"><a href="#1-修改root密码" class="headerlink" title="1.修改root密码"></a>1.修改root密码</h1><p><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160605002222289-1832209422.png" alt=""></p>
+<p>登录到VPS，键入 passwd 即可修改root密码，注意输入内容不会以星号呈现。</p>
+<h1 id="2-采用SSH-key登录"><a href="#2-采用SSH-key登录" class="headerlink" title="2.采用SSH-key登录"></a>2.采用SSH-key登录</h1><p>采用密钥登录的好处就是如果有人知道你的root密码了，但他没有对应的密钥文件，那么他就不能通过SSH登录到VPS。而这个密钥文件只存在在你自己的电脑上，除非你硬盘被盗或者被入侵了。相应的教程实在太多了，这里简略说下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #008000;">//</span><span style="color: #008000;">服务器端（生成密钥对）</span><br><span style="color: #008080;">2</span> <span style="color: #0000ff;">ssh-keygen</span> -t rsa             <span style="color: #008000;">//</span><span style="color: #008000;">生成密钥，按照提示操作<br></span><span style="color: #008080;">3</span> <span style="color: #008000;">//</span><span style="color: #008000;">将root/.ssh目录中的id_rsa和id_rsa.pub下载到本地</span><br><span style="color: #008080;">4</span> cd /root/.<span style="color: #0000ff;">ssh</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">更改工作目录到/root/.ssh</span><br><span style="color: #008080;">5</span> <span style="color: #0000ff;">mv</span> id_rsa.pub authorized_keys <span style="color: #008000;">//</span><span style="color: #008000;">将id_rsa.pub重命名为authorized_keys</span><br><span style="color: #008080;">6</span> <span style="color: #0000ff;">chmod</span> <span style="color: #800080;">600</span> authorized_keys     <span style="color: #008000;">//</span><span style="color: #008000;">给authorized_keys设置600权限</span><br><span style="color: #008080;">7</span> <span style="color: #0000ff;">vi</span> /etc/<span style="color: #0000ff;">ssh</span>/sshd_config       <span style="color: #008000;">//</span><span style="color: #008000;">编辑SSHD配置文件<br></span><span style="color: #008080;">8</span> <span style="color: #008000;">//</span><span style="color: #008000;">去掉RSAAuthentication和PubkeyAuthentication两行前面的#</span><br><span style="color: #008080;">9</span> /etc/init.d/sshd restart      <span style="color: #008000;">//</span><span style="color: #008000;">重启SSHD服</span></pre><br></div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #008000;">//</span><span style="color: #008000;">本地端（载入私钥）</span><br><span style="color: #008080;">2</span> <span style="color: #000000;">打开puttygen.exe，载入密钥（id_rsa文件，无后缀），输入在SSH中设置的密钥密码，最后保存私钥（Putty适用的类型，后缀为ppk）。<br></span><span style="color: #008080;">3</span> 打开putty.exe，找到连接（Connection）-SSH-认证（Auth），找到&ldquo;认证私钥文件&rdquo;一栏（Private key <span style="color: #0000ff;">for</span> authentication），点击浏览（Browse），载入刚才保存的ppk文件，应该可以顺利登陆了。</pre><br></div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #008000;">//</span><span style="color: #008000;">服务器端（关闭密码登录）</span><br><span style="color: #008080;">2</span> <span style="color: #0000ff;">vi</span> /etc/<span style="color: #0000ff;">ssh</span>/sshd_config       <span style="color: #008000;">//</span><span style="color: #008000;">编辑SSHD配置文件<br></span><span style="color: #008080;">3</span> <span style="color: #008000;">//</span><span style="color: #008000;">找到PasswordAuthentication后面的yes改成no，保存</span><br><span style="color: #008080;">4</span> /etc/init.d/sshd restart      <span style="color: #008000;">//</span><span style="color: #008000;">重启SSHD服</span></pre><br></div>
+
+<p>到此，VPS密钥登录配置完成。</p>
+<h1 id="3-配置iptables"><a href="#3-配置iptables" class="headerlink" title="3.配置iptables"></a>3.配置iptables</h1><blockquote>
+<p><em>iptables</em> 是一个配置 Linux 内核 <span class="mw-redirect">防火墙</span> 的命令行工具，是 <span class="extiw">netfilter</span> 项目的一部分。术语 <em>iptables</em> 也经常代指该内核级防火墙。iptables 可以直接配置，也可以通过许多 前端 和 <span class="mw-redirect">图形界面</span> 配置。iptables 用于 <span class="extiw">ipv4</span>，<em>ip6tables</em> 用于 <span class="extiw">ipv6</span>。</p>
+<p><a href="https://wiki.archlinux.org/index.php/Iptables_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">Archlinux Wiki 中的 iptables 条目</a></p>
+</blockquote>
+<p>&nbsp;iptables研究起来会耗费大量时间，有兴趣的话不妨移步：<a href="https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html" target="_blank" rel="noopener">Iptables 指南 1.1.19</a></p>
+<p>下面粘贴一下自己的配置：</p>
+<div class="cnblogs_code"><br><pre>*<span style="color: #000000;">filter<br>:INPUT ACCEPT [</span><span style="color: #800080;">0</span>:<span style="color: #800080;">0</span><span style="color: #000000;">]<br>:FORWARD ACCEPT [</span><span style="color: #800080;">0</span>:<span style="color: #800080;">0</span><span style="color: #000000;">]<br>:OUTPUT ACCEPT [</span><span style="color: #800080;">0</span>:<span style="color: #800080;">0</span><span style="color: #000000;">]<br><br># 开放本地和Ping<br></span>-A INPUT -i lo -<span style="color: #000000;">j ACCEPT<br></span>-A INPUT -p icmp -<span style="color: #000000;">j ACCEPT<br><br># 保持当前SSH连接<br></span>-A INPUT -m state –state RELATED,ESTABLISHED -<span style="color: #000000;">j ACCEPT<br><br># 控制端口<br># HTTP （建站才会用到）<br>#</span>-A INPUT -p tcp –dport <span style="color: #800080;">80</span> -<span style="color: #000000;">j ACCEPT<br># nginx <span style="color: #000000;">（建站才会用到）</span><br>#</span>-A INPUT -p tcp –dport <span style="color: #800080;">8384</span> -<span style="color: #000000;">j ACCEPT</span><span style="color: #000000;"><br># SSH （自行修改）<br></span>-A INPUT -p tcp –dport <span style="color: #800080;">$(SSH)</span>-<span style="color: #000000;">j ACCEPT<br># SS （自行修改）<br></span>-A INPUT -p tcp –dport <span style="color: #800080;">$(SS)</span>-<span style="color: #000000;">j ACCEPT<br><br>#拒绝其它<br></span>-A INPUT -p icmp -j REJECT –reject-with icmp-port-<span style="color: #000000;">unreachable<br></span>-A INPUT -j REJECT –reject-with icmp-port-<span style="color: #000000;">unreachable<br></span>-A FORWARD -j REJECT –reject-with icmp-port-<span style="color: #000000;">unreachable<br><br>#开放出口<br></span>-A OUTPUT -<span style="color: #000000;">j ACCEPT<br><br>COMMIT</span></pre><br></div>
+
+<h1 id="nbsp-4-fail2ban"><a href="#nbsp-4-fail2ban" class="headerlink" title="&nbsp;4.fail2ban"></a>&nbsp;4.fail2ban</h1><p>字面上理解，就是&ldquo;登录失败了就把你ban掉&rdquo;，可以防范某些不怀好意的人暴力登录你的VPS。</p>
+<p>可参考：<a href="http://www.poluoluo.com/server/201404/269766.html" target="_blank" rel="noopener">centos下fail2ban安装与配置详解</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/VPS-入坑之路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/VPS-入坑之路/" itemprop="url">
+                  VPS 入坑之路
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-04 23:58:00" itemprop="dateCreated datePublished" datetime="2016-06-04T23:58:00+08:00">2016-06-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、入坑动机："><a href="#一、入坑动机：" class="headerlink" title="一、入坑动机："></a><span style="font-family: 黑体;">一、入坑动机：</span></h1><p>以前一直的翻墙服务也被请喝茶了，仅限企业客户使用。于是想到租用一个VPS，搭个梯子。</p>
+<p>&nbsp;</p>
+<h1 id="二、入坑之路："><a href="#二、入坑之路：" class="headerlink" title="二、入坑之路："></a><span style="font-family: Calibri;" lang="en-US">二、入坑之路：</span></h1><h2 id="1-购买"><a href="#1-购买" class="headerlink" title="1.购买"></a><span style="font-family: Calibri;" lang="en-US">1.购买</span></h2><p><span style="font-family: Calibri;" lang="en-US">想起在G+看见有人推荐搬瓦工性价比很高，去了解了一下，最低配置19.99刀一年，折合人民币也就十块一个月的样子，果断入之。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US"><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160604232140571-623719640.png" alt=""></span></p>
+<h2 id="2-SS"><a href="#2-SS" class="headerlink" title="2.SS"></a><span style="font-family: Calibri;" lang="en-US">2.SS</span></h2><p><span style="font-family: Calibri;" lang="en-US">以前在虚拟机稍微接触过linux，比如ubuntu和fedora，然而都是在图形界面瞎搞。这次终于有机会在终端操作了。各种命令上手确实不容易，只会cd，ls…突然发现控制面板有一键搭建SS，后来又放弃了敲命令…有一天心血来潮，决定自己搭建SS-libev（据说内存占用低，性能优秀），于是Install new OS，重装系统。参考各种教程后，搭建成功。<br></span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US"><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160604233101258-856711305.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US">意外地发现VPS可以申请v6地址，重点是校园网v6无限流量，于是又想搭个v4/v6双栈服务器，让SS同时支持v4/v6。这里走了点弯路，不知道为什么去搞了一下Squid，徒劳无功。最后发现SS自带监听v6流量…</span></p>
+<h2 id="3-防火墙"><a href="#3-防火墙" class="headerlink" title="3.防火墙"></a><span style="font-family: Calibri;" lang="en-US">3.防火墙</span></h2><p><span style="font-family: Calibri;" lang="en-US">好景不长。不久后有一天不能翻墙了，登陆面板，收到来自搬瓦工的Warning，如图。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US"><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160604234758086-703960070.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US">Mass Mailing？简直匪夷所思。一开始啥也不管，直接点unsuspend，果断重装系统。心想总没问题了吧。当晚凌晨，再次被暂停服务。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US"><img src="http://images2015.cnblogs.com/blog/873981/201606/873981-20160604234909024-1201065134.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US">一年只能解封三次，只剩一次机会了…20刀即将打水漂。这次没有立刻解封，<span style="font-family: Calibri;" lang="en-US">Google后才知道VPS被肉鸡了，必须配置防火墙。然后又开始了新一轮折腾。首先改掉root密码，然后关闭密码登录，只允许密钥登录。然后配置iptable，封掉所有无用端口。最后加入fail2ban，世界终于清静了。</span></span></p>
+<p>&nbsp;</p>
+<h1 id="三、各种玩法"><a href="#三、各种玩法" class="headerlink" title="三、各种玩法"></a><span style="font-family: Calibri;" lang="en-US">三、各种玩法</span></h1><p><span style="font-family: Calibri;" lang="en-US">　　下面是我的概要记录：</span></p>
+<h2 id="系统级："><a href="#系统级：" class="headerlink" title="系统级："></a><span style="font-family: Calibri;" lang="en-US">系统级：</span></h2><p><span style="font-family: Calibri;" lang="en-US">Iptable<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">+<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">sshkey<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">+<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">f<span style="font-family: 'Arial Unicode MS';" lang="x-none">ail2ban<span style="font-family: Calibri;" lang="en-US"> <span style="font-family: 微软雅黑;" lang="zh-CN">搭建防火墙</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="font-family: 'Arial Unicode MS';" lang="x-none">Ps -A + top <span style="font-family: 微软雅黑;" lang="zh-CN">查看进程</span></span></p>
+<p><span style="font-family: Calibri;" lang="en-US">Iftop<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">+<span style="font-family: 'Arial Unicode MS';" lang="x-none"> <span style="font-family: Calibri;" lang="en-US">netstat<span style="font-family: 微软雅黑;" lang="zh-CN">实时查看网络流量</span></span></span></span></span></span></p>
+<h2 id="应用级："><a href="#应用级：" class="headerlink" title="应用级："></a><span style="font-family: Calibri;" lang="en-US"><span style="font-family: 'Arial Unicode MS';" lang="x-none"><span style="font-family: Calibri;" lang="en-US"><span style="font-family: 'Arial Unicode MS';" lang="x-none"><span style="font-family: Calibri;" lang="en-US"><span style="font-family: 微软雅黑;" lang="zh-CN">应用级：</span></span></span></span></span></span></h2><p>&nbsp;</p>
+<p><span style="font-family: Calibri;" lang="en-US"><span style="font-family: 微软雅黑;" lang="zh-CN"><span style="font-family: Calibri;" lang="en-US">S<span style="font-family: 'Arial Unicode MS';" lang="x-none">hadowsocks<span style="font-family: Calibri;" lang="en-US">-<span style="font-family: 'Arial Unicode MS';" lang="x-none">libev <span style="font-family: 微软雅黑;" lang="zh-CN">翻墙</span></span></span></span></span></span></span></p>
+<p><span style="font-family: Calibri;" lang="en-US">Aria2<span style="font-family: 微软雅黑;" lang="zh-CN">实现离线下载</span></span></p>
+<p><span style="font-family: 'Arial Unicode MS';" lang="x-none">Aria2-webui<span style="font-family: 微软雅黑;" lang="zh-CN">实现<span style="font-family: 'Arial Unicode MS';" lang="x-none">aria2<span style="font-family: 微软雅黑;" lang="zh-CN">图形化</span></span></span></span></p>
+<p><span style="text-decoration: line-through;"><span style="font-family: Calibri;" lang="en-US">Nginx<span style="font-family: 微软雅黑;" lang="zh-CN">开放<span style="font-family: Calibri;" lang="en-US">80/8384<span style="font-family: 微软雅黑;" lang="zh-CN">搭建下载服务器</span></span></span></span></span></p>
+<p><span style="font-family: 'Arial Unicode MS';" lang="x-none">Dot.tk<span style="font-family: 微软雅黑;" lang="zh-CN">获得免费域名</span></span></p>
+<p><span style="text-decoration: line-through; font-family: 微软雅黑;" lang="zh-CN">搭建<span style="text-decoration: line-through; font-family: Calibri;" lang="en-US">FTP </span></span><span style="font-family: 微软雅黑;" lang="zh-CN"><span style="font-family: Calibri;" lang="en-US"><span style="font-family: 微软雅黑;" lang="zh-CN">利用<span style="font-family: Calibri;" lang="en-US">SSHD<span style="font-family: 微软雅黑;" lang="zh-CN">服务<span style="font-family: Calibri;" lang="en-US">SFTP<span style="font-family: 'Arial Unicode MS';" lang="x-none">(Filezilla+SSH<span style="font-family: 微软雅黑;" lang="zh-CN">端口<span style="font-family: Calibri;" lang="en-US">+<span style="font-family: 微软雅黑;" lang="zh-CN">密钥<span style="font-family: 'Arial Unicode MS';" lang="x-none">)</span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="font-family: 微软雅黑;" lang="zh-CN">搞个面板？<span style="text-decoration: line-through; font-family: 'Arial Unicode MS';" lang="en-US">Vesta</span><span style="font-family: 'Arial Unicode MS';" lang="en-US"><span style="font-family: Calibri;" lang="en-US"> ajenti</span></span></span></p>
+<p><span style="font-family: Calibri;" lang="en-US">Wordpress<span style="font-family: 微软雅黑;" lang="zh-CN">搭建博客</span></span></p>
+<p><span style="font-family: Calibri;" lang="en-US">startSSL<span style="font-family: 微软雅黑;" lang="zh-CN">获得<span style="font-family: Calibri;" lang="en-US">SSL<span style="font-family: 微软雅黑;" lang="zh-CN">证书实现<span style="font-family: Calibri;" lang="en-US">HTTPS<span style="font-family: 微软雅黑;" lang="zh-CN">连接</span></span></span></span></span></span></p>
+<p><span style="font-family: Calibri;" lang="en-US">Postfix <span style="font-family: 微软雅黑;" lang="zh-CN">邮件系统</span></span></p>
+<p>&nbsp;</p>
+<h1 id="四、后记"><a href="#四、后记" class="headerlink" title="四、后记"></a>四、后记</h1><p>VPS真是个好东西。以后再补充下各种心得。</p>
+<p>PS：番羽土蔷全成了FQ…也是醉</p>
+<div class="itanywhere-activator" style="left: 1032px; top: 588px; display: none;" title="Google Translator Anywhere">&nbsp;</div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/Hello-World/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joxon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joxon's">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/Hello-World/" itemprop="url">
+                  Hello World!
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-04 15:26:00" itemprop="dateCreated datePublished" datetime="2016-06-04T15:26:00+08:00">2016-06-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-09 01:45:23" itemprop="dateModified" datetime="2018-08-09T01:45:23+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2016-06-04，博客首文。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1972,8 +2824,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -1986,6 +2838,15 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Joxon" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -2018,7 +2879,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Joxon</span>
 
@@ -2028,9 +2889,11 @@
 </div>
 
 
+  
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -2038,7 +2901,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
 
 
 

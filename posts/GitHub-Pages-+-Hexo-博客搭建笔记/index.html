@@ -108,30 +108,24 @@
 
 
 
-  <meta name="description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
+  <meta name="description" content="前言利用GitHub建博客早已不是什么新鲜事。此文用于记录本次建站的流程，顺便练习一下Markdown的用法。 在静态页面生成器的比较网站上以stars数量排序，前三位分别是：  Jekyll：Ruby实现 Hugo：Go实现 Hexo：Javascript实现  由于对Node.js多少有些经验，故选择了Hexo。 准备 Github 账号一个 Node.js 环境 Visual Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA 9.1&#x2F;9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题">
-<meta property="og:url" content="https://joxon.github.io/posts/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/index.html">
+<meta property="og:title" content="GitHub Pages + Hexo 博客搭建笔记">
+<meta property="og:url" content="https://joxon.github.io/posts/GitHub-Pages-+-Hexo-博客搭建笔记/index.html">
 <meta property="og:site_name" content="Joxon&#39;s">
-<meta property="og:description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
+<meta property="og:description" content="前言利用GitHub建博客早已不是什么新鲜事。此文用于记录本次建站的流程，顺便练习一下Markdown的用法。 在静态页面生成器的比较网站上以stars数量排序，前三位分别是：  Jekyll：Ruby实现 Hugo：Go实现 Hexo：Javascript实现  由于对Node.js多少有些经验，故选择了Hexo。 准备 Github 账号一个 Node.js 环境 Visual Studio">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325005717019-644346677.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325010120581-530451321.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325120150343-1065580230.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325115734859-125845443.png">
-<meta property="og:updated_time" content="2018-08-08T17:40:18.796Z">
+<meta property="og:updated_time" content="2018-08-09T09:12:48.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CUDA 9.1&#x2F;9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题">
-<meta name="twitter:description" content="2018年7月9日更新：CUDA已推出9.2版本，最高支持MSVC++ 14.13 _MSC_VER == 1913 (Visual Studio 2017 version 15.6)。  然而最新版本是MSVC++ 14.14 _MSC_VER == 1914 (Visual Studio 2017 version 15.7)，可见CUDA总比VS要慢一拍。 环境：CUDA Toolkit -">
-<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png">
+<meta name="twitter:title" content="GitHub Pages + Hexo 博客搭建笔记">
+<meta name="twitter:description" content="前言利用GitHub建博客早已不是什么新鲜事。此文用于记录本次建站的流程，顺便练习一下Markdown的用法。 在静态页面生成器的比较网站上以stars数量排序，前三位分别是：  Jekyll：Ruby实现 Hugo：Go实现 Hexo：Javascript实现  由于对Node.js多少有些经验，故选择了Hexo。 准备 Github 账号一个 Node.js 环境 Visual Studio">
 
 
 
 
 
 
-  <link rel="canonical" href="https://joxon.github.io/posts/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/"/>
+  <link rel="canonical" href="https://joxon.github.io/posts/GitHub-Pages-+-Hexo-博客搭建笔记/"/>
 
 
 
@@ -141,7 +135,7 @@
   };
 </script>
 
-  <title>CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题 | Joxon's</title>
+  <title>GitHub Pages + Hexo 博客搭建笔记 | Joxon's</title>
   
 
 
@@ -294,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/CUDA-9-1-9-2-与-Visual-Studio-2017-VS2017-15-6-4-的不兼容问题/">
+    <link itemprop="mainEntityOfPage" href="https://joxon.github.io/posts/GitHub-Pages-+-Hexo-博客搭建笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joxon">
@@ -311,7 +305,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">CUDA 9.1/9.2 与 Visual Studio 2017 (VS2017 15.6.4) 的不兼容问题
+          <h2 class="post-title" itemprop="name headline">GitHub Pages + Hexo 博客搭建笔记
               
             
           </h2>
@@ -336,24 +330,12 @@
                 
               
 
-              <time title="创建时间：2018-03-25 01:06:00" itemprop="dateCreated datePublished" datetime="2018-03-25T01:06:00+08:00">2018-03-25</time>
+              <time title="创建时间：2018-08-09 02:44:17 / 修改时间：17:12:48" itemprop="dateCreated datePublished" datetime="2018-08-09T02:44:17+08:00">2018-08-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-09 01:40:18" itemprop="dateModified" datetime="2018-08-09T01:40:18+08:00">2018-08-09</time>
               
             
           </span>
@@ -386,27 +368,39 @@
       
 
       
-        <h1 id="2018年7月9日更新："><a href="#2018年7月9日更新：" class="headerlink" title="2018年7月9日更新："></a>2018年7月9日更新：</h1><p>CUDA已推出9.2版本，最高支持<span class="n">MSVC<span class="o">++ <span class="mf">14.13 <span class="n">_MSC_VER <span class="o">== <span class="mi">1913 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.6<span class="p">)。</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p><span class="n"><span class="o"><span class="mf"><span class="n"><span class="o"><span class="mi"><span class="p"><span class="n"><span class="n"><span class="mi"><span class="n"><span class="mf"><span class="p"><img src="https://images2018.cnblogs.com/blog/873981/201807/873981-20180709164534509-287788432.png" alt=""></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p><span class="n"><span class="o"><span class="mf"><span class="n"><span class="o"><span class="mi"><span class="p"><span class="n"><span class="n"><span class="mi"><span class="n"><span class="mf"><span class="p">然而最新版本是<span class="n">MSVC<span class="o">++ <span class="mf">14.14 <span class="n">_MSC_VER <span class="o">== <span class="mi">1914 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.7<span class="p">)</span></span></span></span></span></span></span></span></span></span></span></span></span>，可见CUDA总比VS要慢一拍。</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h1 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h1><p>CUDA Toolkit - v9.1.85</p>
-<p>Visual Studio 2017 (VS2017 15.6.4) + 平台工具集 v141（version 14.12，<code>_MSC_VER=1912）或</code></p>
-<p>CUDA Toolkit - v9.2.88.1</p>
-<p><span class="n">MSVC<span class="o">++ <span class="mf">14.13 <span class="n">_MSC_VER <span class="o">== <span class="mi">1913 <span class="p">(<span class="n">Visual <span class="n">Studio <span class="mi">2017 <span class="n">version <span class="mf">15.6<span class="p">)</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h1 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h1><p>CUDA未能兼容最新版工具集。</p>
-<p>打开C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\include\crt\host_config.h，定位到133行：</p>
-<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325005717019-644346677.png" alt=""></p>
-<p>可以看到当前CUDA支持的工具集版本。</p>
-<p>由于当前工具集版本为<code>1912</code>，故无法兼容。修改_MSC_VER &gt; 1911为更高的数字可以消除报错，但是编译仍然是无法通过的。</p>
-<h1 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h1><p>安装兼容的工具集版本。在这里，我们可以选择1900、1910、1911版本工具集。</p>
-<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325010120581-530451321.png" alt=""></p>
-<p>打开Visual Studio Installer，选择相应的工具集进行安装。</p>
-<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325120150343-1065580230.png" alt=""></p>
-<p>然后修改项目工具集即可。</p>
-<p><img src="https://images2018.cnblogs.com/blog/873981/201803/873981-20180325115734859-125845443.png" alt=""></p>
-<h1 id="参见："><a href="#参见：" class="headerlink" title="参见："></a>参见：</h1><p><a href="https://blog.csdn.net/shenpibaipao/article/details/79519533" target="_blank" rel="noopener">https://blog.csdn.net/shenpibaipao/article/details/79519533</a></p>
-<p><a href="https://devtalk.nvidia.com/default/topic/1027299/cuda-9-failed-to-support-the-latest-visual-studio-2017-version-15-5/" target="_blank" rel="noopener">https://devtalk.nvidia.com/default/topic/1027299/cuda-9-failed-to-support-the-latest-visual-studio-2017-version-15-5/</a></p>
-<p><a href="https://blogs.msdn.microsoft.com/vcblog/2017/11/15/side-by-side-minor-version-msvc-toolsets-in-visual-studio-2017/" target="_blank" rel="noopener">https://blogs.msdn.microsoft.com/vcblog/2017/11/15/side-by-side-minor-version-msvc-toolsets-in-visual-studio-2017/</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>利用GitHub建博客早已不是什么新鲜事。此文用于记录本次建站的流程，顺便练习一下Markdown的用法。</p>
+<p>在<a href="https://staticsitegenerators.net/" target="_blank" rel="noopener">静态页面生成器的比较网站</a>上以stars数量排序，前三位分别是：</p>
+<ul>
+<li>Jekyll：Ruby实现</li>
+<li>Hugo：Go实现</li>
+<li>Hexo：Javascript实现</li>
+</ul>
+<p>由于对Node.js多少有些经验，故选择了Hexo。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>Github 账号一个</li>
+<li>Node.js 环境</li>
+<li>Visual Studio Code</li>
+</ul>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>前往Github的个人页面创建一个新的仓库，名字为<code>[username].github.io</code>，其中<code>[username]</code>是注册Github时的用户名。<strong>一定要保证[username]和注册用户名相同，否则域名将不起作用</strong>，也就是说，一个账号只能拥有一个Github Page。</p>
+<p>可以参考<a href="https://pages.github.com/" target="_blank" rel="noopener">官方的指南</a>作为Hello World。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>假设我们已经配置好Node.js环境，windows用户一定要以管理员权限打开命令行窗口，全局安装<code>hexo-cli</code>到Node环境中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>安装成功后，找一个喜欢的目录，初始化一个hexo项目，[folder]是项目名字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [folder]</span><br></pre></td></tr></table></figure>
+<p>然后改变当前工作目录为刚刚新建的[folder]：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [folder]</span><br></pre></td></tr></table></figure>
+<p>安装项目依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>到此，hexo项目已经安装完毕，可以开始撰文或进行<a href="https://hexo.io/docs/configuration" target="_blank" rel="noopener">参数调节</a>。</p>
+<h3 id="撰文"><a href="#撰文" class="headerlink" title="撰文"></a>撰文</h3><p>执行<code>hexo new [title]</code>，新建一篇md格式的文档，开始编写。</p>
+<p><code>hexo new</code>可以简写为<code>hexo n</code></p>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><p>执行<code>hexo server</code>可以在本地搭建服务器，可以在浏览器预览自己的博客。</p>
+<p><code>hexo server</code>可以简写为<code>hexo s</code>。</p>
+<h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>执行<code>hexo generate</code>可以生成博客的静态文件。</p>
+<p><code>hexo generate</code>可以简写为<code>hexo g</code>。</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>执行<code>hexo deploy</code>可以把博客部署到指定的位置，这里需要配置<code>_config.yml</code>中的deploy参数。</p>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/user/user.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  message: &quot;Site updated: &#123;&#123; now(&apos;YYYY-MM-DD HH:mm:ss&apos;) &#125;&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p><code>hexo deploy</code>可以简写为<code>hexo d</code>。</p>
 
       
     </div>
@@ -434,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/VPS-上搭建-SSR-及其使用之心得/" rel="next" title="VPS 上搭建 SSR 及其使用之心得">
-                <i class="fa fa-chevron-left"></i> VPS 上搭建 SSR 及其使用之心得
+              <a href="/posts/Hello-Hexo/" rel="next" title="Hello Hexo!">
+                <i class="fa fa-chevron-left"></i> Hello Hexo!
               </a>
             
           </div>
@@ -443,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/MariaDB-Visual-Studio-2017-环境下的-ODBC-入门开发/" rel="prev" title="MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发">
-                MariaDB + Visual Studio 2017 环境下的 ODBC 入门开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2018年7月9日更新："><span class="nav-number">1.</span> <span class="nav-text">2018年7月9日更新：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境："><span class="nav-number">2.</span> <span class="nav-text">环境：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原因："><span class="nav-number">3.</span> <span class="nav-text">原因：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案："><span class="nav-number">4.</span> <span class="nav-text">解决方案：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参见："><span class="nav-number">5.</span> <span class="nav-text">参见：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">3.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub"><span class="nav-number">3.1.</span> <span class="nav-text">GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">3.2.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撰文"><span class="nav-number">3.2.2.</span> <span class="nav-text">撰文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预览"><span class="nav-number">3.2.3.</span> <span class="nav-text">预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成"><span class="nav-number">3.2.4.</span> <span class="nav-text">生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.2.5.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
